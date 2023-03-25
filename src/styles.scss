@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+    background-color: var(--bs-gray-800) !important;
+}
+
+app-root {
+    background-color: var(--bs-gray-800) !important;
+}
+
+@font-face {
+  font-family: Fira Mono;
+  src: url(assets/FiraMono-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: Mode Seven;
+  src: url(assets/Modeseven-L3n5.ttf) format("truetype");
+}

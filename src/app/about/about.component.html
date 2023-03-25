@@ -1,0 +1,44 @@
+<div class="cover overflow-hidden vh-100 vw-100 position-absolute top-0 start-0"></div>
+<pre class="cover-text unselectable overflow-scroll vh-100 vw-100 position-absolute top-0 start-0">
+#[cfg(unix)]
+impl AsRawFd for TcpSocket {{ '{' }}
+    fn as_raw_fd(&self) -&gt; RawFd {{ '{' }}
+        self.inner.as_raw_fd()
+    }
+}
+
+#[cfg(all(unix, not(tokio_no_as_fd)))]
+impl AsFd for TcpSocket {{ '{' }}
+    fn as_fd(&self) -&gt; BorrowedFd&lt;'_&gt; {{ '{' }}
+        unsafe {{ '{' }} BorrowedFd::borrow_raw(self.as_raw_fd()) }
+    }
+}
+
+#[cfg(unix)]
+impl FromRawFd for TcpSocket {{ '{' }}
+    /// Converts a `RawFd` to a `TcpSocket`.
+    ///
+    /// # Notes
+    ///
+    /// The caller is responsible for ensuring that the socket is in
+    /// non-blocking mode.
+    unsafe fn from_raw_fd(fd: RawFd) -&gt; TcpSocket {{ '{' }}
+        let inner = socket2::Socket::from_raw_fd(fd);
+        TcpSocket {{ '{' }} inner }
+    }
+}
+</pre>
+<div class="container overflow-hidden">
+  <app-card-img class="position-absolute top-50 start-50 translate-middle unselectable" [imgPath]="'assets/portrait.jpg'">
+    <span title>Carlos Cruz</span>
+    <span subtitle>Associate Developer @ Expeditors International, Inc.</span>
+    <span bodyText>
+      I am at my best solving challenging problems where I have a high degree of
+      creative control, so I decided to pursue a career in tech. I graduated
+      March 24th, 2023 from the Application Development track of Year Up. During
+      my internship at Expeditors International, I helped develop internal web
+      and java applications and was eventually converted. Currently, I am
+      focusing on building CI/CD pipelines and developing automation tools.
+    </span>
+  </app-card-img>
+</div>
